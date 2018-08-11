@@ -7,13 +7,13 @@
 #
 
 from itertools import count
-from collections import defaultdict as ddict
+from collections import defaultdict as ddict # 对空值的字典有效
 import numpy as np
 import torch as th
 
 
-def parse_seperator(line, length, sep='\t'):
-    d = line.strip().split(sep)
+def parse_seperator(line, length, sep='\t'):  # \t: 横向跳到下一制表符位置
+    d = line.strip().split(sep)   # strip: 用于移除字符串头尾指定的字符
     if len(d) == length:
         w = 1
     elif len(d) == length + 1:
