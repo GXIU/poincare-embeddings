@@ -24,7 +24,7 @@ def parse_seperator(line, length, sep='\t'):  # \t: 横向跳到下一制表符�
     return tuple(d) + (w,)
 
 
-def parse_tsv(line, length=2):
+def parse_tsv(line, length=2):   # 按照空格分割文件
     return parse_seperator(line, length, '\t')
 
 
@@ -32,7 +32,7 @@ def parse_space(line, length=2):
     return parse_seperator(line, length, ' ')
 
 
-def iter_line(fname, fparse, length=2, comment='#'):
+def iter_line(fname, fparse, length=2, comment='#'): # 按照行迭代
     with open(fname, 'r') as fin:
         for line in fin:
             if line[0] == comment:
@@ -42,7 +42,7 @@ def iter_line(fname, fparse, length=2, comment='#'):
                 yield tpl
 
 
-def intmap_to_list(d):
+def intmap_to_list(d):        # 编号
     arr = [None for _ in range(len(d))]
     for v, i in d.items():
         arr[i] = v
